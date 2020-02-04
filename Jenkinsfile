@@ -50,6 +50,9 @@ pipeline {
                 docker { image 'node:alpine' }
             }
             steps {
+                dir('code/backend'){
+                    sh 'npm run test'
+                }
                 echo 'Test'
             }
         }
