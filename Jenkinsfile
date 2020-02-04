@@ -81,7 +81,11 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {                
+            steps {
+                dir('ci/code'){
+                        sh 'docker-compose -f docker-compose.yml build'
+                        sh 'docker-compose -f docker-compose.yml up -d'
+                    }                
                 echo 'Deploy'
             }
         }
